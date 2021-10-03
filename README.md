@@ -55,7 +55,7 @@ docker network create oradbnet
 docker network ls
 ```
 
-## Pull and create the first DB
+## Docker run and create the first DB
 ```
 export ORACLE_SID=oradb01
 export ORANET=oradbnet
@@ -67,7 +67,7 @@ docker run -d -p 1521:1521 -p 5500:5500 --name $ORACLE_SID --user oracle --netwo
 docker logs -f $ORACLE_SID
 ```
 
-## Pull and create the second DB (on different ports)
+## Docker run and create the second DB (on different ports)
 ```
 export ORACLE_SID=oradb02
 export ORANET=oradbnet
@@ -143,4 +143,4 @@ rtt min/avg/max/mdev = 0.042/0.049/0.055/0.008 ms
 [Getting started w/Docker YouTube link](https://youtu.be/iqqDU2crIEQ)
 
 ### for any questions, you can find me on twitter
-[Yaniv Harpaz on Twitter](www.twitter.com/w1025)
+[Yaniv Harpaz on Twitter](http://www.twitter.com/w1025)
