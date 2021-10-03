@@ -37,6 +37,8 @@ sudo yum-config-manager \
 
 
 sudo yum install -y docker-ce docker-ce-cli containerd.io
+sudo service docker start
+sudo systemctl enable docker
 ```
 
 ## Allow the current user to run docker commands
@@ -99,6 +101,11 @@ docker start oradb01 oradb02
 ## and later start the containers again
 ```
 docker stop oradb01 oradb02
+```
+
+## Show all current containers (including stopped (-a) )
+```
+docker container ls -a
 ```
 
 ## When you no longer need these DB containers you can remove them
