@@ -46,10 +46,17 @@ sudo systemctl enable docker
 sudo groupadd docker
 sudo usermod -aG docker $USER
 ```
-## Load the demo image for Oracle RDBMS
+## Load the demo image for Oracle RDBMS  
+*make sure you accept the license terms on the website
 ```
-docker pull yanivharpaz/oradb
+docker login container-registry.oracle.com
+docker pull container-registry.oracle.com/database/enterprise:latest
 ```   
+if you want a specific version, go with:
+```
+docker pull docker pull container-registry.oracle.com/database/enterprise:19.3.0.0
+```
+
 
 ## Create the docker network for the RDBMS containers
 ```
@@ -64,9 +71,15 @@ export ORANET=oradbnet
 
 sudo mkdir -p /data/oradata/$ORACLE_SID
 sudo chown 54321:54322 -R /data/oradata/$ORACLE_SID
-docker run -d -p 1521:1521 -p 5500:5500 --name $ORACLE_SID --user oracle --network $ORANET -v /data/oradata/$ORACLE_SID:/opt/oracle/oradata -e ORACLE_PDB=$ORACLE_SID_PDB -e ORACLE_SID=$ORACLE_SID yanivharpaz/oradb
+docker run -d -p 1521:1521 -p 5500:5500 --name $ORACLE_SID --user oracle --network $ORANET -v /data/oradata/$ORACLE_SID:/opt/oracle/oradata -e ORACLE_PDB=$ORACLE_SID_PDB -e ORACLE_SID=$ORACLE_SID container-registry.oracle.com/database/enterprise:latest
 
+docker ports $ORACLE_SID
 docker logs -f $ORACLE_SID
+```
+
+Change the initial sys/system password:
+```
+docker exec <oracle-db> ./setPassword.sh <your_password>
 ```
 
 ## Docker run and create the second DB (on different ports)
