@@ -73,7 +73,7 @@ sudo mkdir -p /data/oradata/$ORACLE_SID
 sudo chown 54321:54322 -R /data/oradata/$ORACLE_SID
 docker run -d -p 1521:1521 -p 5500:5500 --name $ORACLE_SID --user oracle --network $ORANET -v /data/oradata/$ORACLE_SID:/opt/oracle/oradata -e ORACLE_PDB=$ORACLE_SID_PDB -e ORACLE_SID=$ORACLE_SID container-registry.oracle.com/database/enterprise:latest
 
-docker ports $ORACLE_SID
+docker port $ORACLE_SID
 docker logs -f $ORACLE_SID
 ```
 
