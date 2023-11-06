@@ -50,6 +50,9 @@ sudo usermod -aG docker $USER
 *make sure you accept the license terms on the website
 ```
 docker login container-registry.oracle.com
+```
+pull the latest image:  
+```
 docker pull container-registry.oracle.com/database/enterprise:latest
 ```   
 if you want a specific version, go with:
