@@ -54,7 +54,8 @@ docker pull container-registry.oracle.com/database/enterprise:latest
 ```   
 if you want a specific version, go with:
 ```
-docker pull docker pull container-registry.oracle.com/database/enterprise:19.3.0.0
+docker pull container-registry.oracle.com/database/enterprise:19.3.0.0
+docker pull container-registry.oracle.com/database/rac:latest
 ```
 
 
